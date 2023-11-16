@@ -1,5 +1,5 @@
 ```mermaid
-flowchart LR
+flowchart TD
     self_harm1{"Where Did The Incident Take Place"} -->|" Ordinary "| self_harm2
     self_harm1{"Where Did The Incident Take Place"} -->|" Vpu/Other Protected "| self_harm2
     self_harm1{"Where Did The Incident Take Place"} -->|" Health Care Centre "| self_harm2
