@@ -63,4 +63,5 @@ flowchart TD
     misc21{"Describe The Damage"} --> |"Minor"| misc22
     misc21{"Describe The Damage"} --> |"Serious"| misc22
     misc21{"Describe The Damage"} --> |"Extensive"| misc22
+    misc22{"End"}
 ```

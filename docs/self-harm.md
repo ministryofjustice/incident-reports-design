@@ -103,4 +103,5 @@ flowchart TD
     self_harm27{"When Was The Last F2052Sh/Acct Closed"} -->|" Within One Month "| self_harm28
     self_harm27{"When Was The Last F2052Sh/Acct Closed"} -->|" More Than One Month "| self_harm28
     self_harm27{"When Was The Last F2052Sh/Acct Closed"} -->|" Not Applicable "| self_harm28
+    self_harm28{"End"}
 ```

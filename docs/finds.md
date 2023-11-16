@@ -440,4 +440,5 @@ flowchart TD
     find042247{"Were Any Other Reportable Items Found (By National Or Local Policy)"} -->|" Yes (Noose / Ligature) "| find042248
     find042247{"Were Any Other Reportable Items Found (By National Or Local Policy)"} -->|" Yes - (Please Specify In Comments) "| find042248
     find042248{"Were The Items Obtained On Temporary Release?"} -->|" Yes "| find042249
+    find042249{"End"}
 ```
