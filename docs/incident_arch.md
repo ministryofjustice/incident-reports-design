@@ -35,7 +35,7 @@ subgraph incidentReportingService[Incident Reporting Service]
     uiApplication--Makes API calls to -->incidentReportingApi
     incidentReportingApi--Reads from and \n writes to -->database
 end
-incidentReportingService:::internalSystem
+incidentReportingService:::newSystem
 
 incidentReportingApi--Publishes incident \n created/updated events -->domainEvents
 incidentReportingApi--Audits changes -->auditService
@@ -63,7 +63,7 @@ end
 otherServices:::internalSystem
 
 
-domainEvents<--Listens to incident events from DPS -->nomisUpdateApi
+domainEvents<--Listens to incident events from DPS -->sysconApis
 
 subgraph eventsSystem[Event / Audit Services]
     subgraph domainEvents[Domain Events]
@@ -86,10 +86,16 @@ end
 auditSystem:::internalSystem
 
 prisonApi--Reads from and \n writes to -->nomisDb
-nomisPrisonerApi--read and update -->nomisDb
-incidentReportingApi--looks up prisoner information -->prisonerSearchApi
+incidentReportingApi--augments prisoner information -->prisonerSearchApi
+uiApplication--search for prisoners -->prisonerSearchApi
 
-subgraph NOMIS[NOMIS]
+subgraph NOMIS[NOMIS & Related Services]
+    subgraph sysconApis[Syscon Services]
+        direction LR
+        h82[Container: Kotlin / Spring Boot]:::type
+        d82[Migration and Sync Management Services]:::description
+    end
+    sysconApis:::sysconContainer
     subgraph oracleForms[NOMIS front end]
         direction LR
         h91[Container: Weblogic / Oracle Forms]:::type
@@ -111,13 +117,14 @@ NOMIS:::legacySystem
 
 %% Element type definitions
 
-classDef person fill:green, color:#fff
-classDef internalContainer fill:#1168bd
-classDef migrationContainer fill:wheat
-classDef legacyContainer fill:purple
-classDef internalSystem fill:lightblue
-classDef legacySystem fill:lightblue 
-classDef otherHmppsSystem fill: lightblue, color:#fff, stroke-width:0px  
+classDef person fill:#90BD90, color:#000
+classDef internalContainer fill:#1168bd, color:#fff
+classDef legacyContainer fill:purple, color:#fff
+classDef sysconContainer fill:#1168bd, color:#fff
+classDef internalSystem fill:#A8B5BD
+classDef newSystem fill:#D5EAF6, color:#000
+classDef legacySystem fill:#A890BD, color:#fff
+
 
 classDef type stroke-width:0px, color:#fff, fill:transparent, font-size:12px
 classDef description stroke-width:0px, color:#fff, fill:transparent, font-size:13px
